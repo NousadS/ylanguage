@@ -1,20 +1,11 @@
-import json
+import typer
+from src.ybuilder import YBuilder
 
-from filer import Argumenter, Reader, Writer
-from lexer import Lexer
+app = typer.Typer()
+
+@app.command()
+def run(filename: str, encoding: str = "utf-8"):
+    YBuilder(filename, encoding).build()
 
 if __name__ == "__main__":
-    argumenter = Argumenter()
-
-    reader = Reader(argumenter)
-
-    lexer = Lexer(reader.source)
-
-    writer = Writer(
-        argumenter,
-        json.dumps(
-            lexer.tokens,
-            ensure_ascii=False,
-            indent=4,
-        ),
-    )
+    app()

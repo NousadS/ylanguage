@@ -5,7 +5,7 @@ description = "Y Language :)"
 readme = "README.md"
 authors = [{ name = "NousadS", email = "nousad.cat@gmail.com" }]
 license = { text = "MIT" }
-dependencies = []
+dependencies = ["typer>=0.15.1"]
 requires-python = "==3.12.*"
 
 [tool.pdm]
