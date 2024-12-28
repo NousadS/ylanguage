@@ -1,0 +1,12 @@
+[project]
+name = "y-language"
+version = "0.0.1"
+description = "Y Language :)"
+readme = "README.md"
+authors = [{ name = "NousadS", email = "nousad.cat@gmail.com" }]
+license = { text = "MIT" }
+dependencies = []
+requires-python = "==3.12.*"
+
+[tool.pdm]
+distribution = false
