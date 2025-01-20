@@ -1,0 +1,4 @@
+FlatExpression -> Identifier<list> Operator<=> Square<ElementExpression -> IntegerDecimal<1>, ElementExpression -> IntegerDecimal<2>, FlatExpression -> IntegerDecimal<3> Operator<+> IntegerDecimal<4>>
+FlatExpression -> Identifier<tuple> Operator<=> Round<ElementExpression -> IntegerDecimal<1>, ElementExpression -> IntegerDecimal<2>, FlatExpression -> IntegerDecimal<3> Operator<+> IntegerDecimal<4>>
+FlatExpression -> Identifier<set> Operator<=> Curly<ElementExpression -> IntegerDecimal<1>, ElementExpression -> IntegerDecimal<2>, FlatExpression -> IntegerDecimal<3> Operator<+> IntegerDecimal<4>>
+FlatExpression -> Identifier<dict> Operator<=> Curly<FlatExpression -> IntegerDecimal<1> Operator<:> String<'one'>, FlatExpression -> IntegerDecimal<2> Operator<:> String<'two'>, FlatExpression -> IntegerDecimal<3> Operator<+> IntegerDecimal<4> Operator<:> String<'three'>>

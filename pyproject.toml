@@ -1,6 +1,6 @@
 [project]
 name = "y-language"
-version = "0.0.2"
+version = "0.0.5"
 description = "Y Language :)"
 readme = "README.md"
 authors = [{ name = "NousadS", email = "nousad.cat@gmail.com" }]
@@ -8,5 +8,17 @@ license = { text = "MIT" }
 dependencies = ["typer>=0.15.1"]
 requires-python = "==3.12.*"
 
+[dependency-groups]
+dev = ["mypy>=1.14.1"]
+
 [tool.pdm]
 distribution = false
+
+[tool.mypy]
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+python_version = "3.12"
+strict = true
+show_error_codes = true
+warn_unused_ignores = true
+ignore_missing_imports = true
