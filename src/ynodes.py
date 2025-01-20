@@ -236,7 +236,7 @@ class YExpression(YNode):
         return {"name": self.name, "nodes": [n.as_dict() for n in self.nodes]}
 
     def as_str(self) -> str:
-        return f"{self.name} -> {' '.join([n.as_str() for n in self.nodes])}"
+        return f"{self.name} -> {' '.join([n.as_str() for n in self.nodes])} |"
 
 
 OPERANDS = (
@@ -265,20 +265,22 @@ class YFlatExpression(YExpression):
 
     def check(self) -> bool:
         for span in [2, 3]:
-            call_expression: YCallExpression = None
+            call_expression: YCallExpression | None = None
             call_position: int = 0
 
-            while len(self.nodes[call_position : call_position + 2]) == 2:
+            while len(self.nodes[call_position : call_position + span]) == span:
                 call_expression = YCallExpression(
-                    self.nodes[call_position : call_position + 2]
+                    self.nodes[call_position : call_position + span]
                 )
 
                 if call_expression.check():
-                    self.nodes[call_position] = call_expression
-                    del self.nodes[call_position + 1]
+                    self.nodes = [
+                        *self.nodes[:call_position],
+                        call_expression,
+                        *self.nodes[call_position + span :],
+                    ]
                 else:
                     call_position += 1
-
 
         return (
             len(self.nodes) == 2
@@ -392,3 +394,6 @@ class YElementExpression(YExpression):
 
     def check(self) -> bool:
         return len(self.nodes) == 1 and self.nodes[0] in OPERANDS
+
+    def as_str(self) -> str:
+        return f"{self.name} -> {' '.join([n.as_str() for n in self.nodes])}"

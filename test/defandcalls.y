@@ -20,5 +20,6 @@ null = none
 sum = 1 + 2
 
 name = John("Wow") + "Hello"
+name = John[int]("Wow") + "Hello"
 
 name.print("Hello")
